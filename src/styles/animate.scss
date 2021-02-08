@@ -1,0 +1,127 @@
+// 原地翻转
+@keyframes robotmove{
+    0%{}
+    50%{transform:rotateY(360deg);}/*49%-50%图片翻转*/
+    100%{transform:rotateY(360deg);}/*保障后百分之五十都是翻转了180度的形状*/
+}
+
+.amin-rotate{
+  animation: robotmove 2s 2s linear infinite;
+  -moz-animation: robotmove 2s 2s linear infinite;
+  -webkit-animation: robotmove 2s 2s linear infinite;
+  -o-animation: robotmove 2s 2s linear infinite;
+}
+
+.amin-rotate__delay{
+  animation: robotmove 2s 3s linear infinite;
+  -moz-animation: robotmove 2s 3s linear infinite;
+  -webkit-animation: robotmove 2s 3s linear infinite;
+  -o-animation: robotmove 2s 3s linear infinite;
+}
+
+@keyframes diffusion {
+    0%{
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50%{
+        transform: scale(1.5);
+        opacity: 0;   /*圆形放大的同时，透明度逐渐减小为0*/
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+.anim-diffusion {
+  animation: diffusion 3s linear infinite;
+  -moz-animation: diffusion 3s linear infinite;
+  -webkit-animation: diffusion 3s linear infinite;
+  -o-animation: diffusion 3s linear infinite;
+}
+
+@keyframes scalesize {
+  0%{transform: scale(0.9); opacity: 0.5}
+  50%{transform: scale(1.0); opacity: 1}
+  100%{transform: scale(1.1); opacity: 0.5;}
+}
+
+.anit-scale {
+  animation: diffusion 2s linear infinite;
+  -moz-animation: diffusion 2s linear infinite;
+  -webkit-animation: diffusion 2s linear infinite;
+  -o-animation: diffusion 2s linear infinite;
+}
+
+// 烟花效果
+// @keyframes firing {
+//   0%{ padding: 80px; -webkit-transform: scale(0.5) translate(0); opacity:1; }
+//   50%{ padding: 80px; -webkit-transform: scale(0.75) translate(0); opacity:1; }
+//   100%{ opacity: 0; -webkit-transform: scale(1); }
+// }
+
+// @-webkit-keyframes firing {
+//   0%{ padding: 80px; -webkit-transform: scale(0.5) translate(0); opacity:1; }
+//   100%{ opacity: 0; -webkit-transform:scale(1); }
+// }
+
+// 烟花效果
+@keyframes firing {
+  0%{-webkit-transform: scale(0.3) translate(0); opacity:1; }
+  100%{ opacity: 0.5; -webkit-transform: scale(1); }
+}
+
+@-webkit-keyframes firing {
+  0%{-webkit-transform: scale(0.3) translate(0); opacity:1; }
+  100%{ opacity: 0.5; -webkit-transform:scale(1); }
+}
+.anit-firing{
+  animation: firing 2s 2s ease forwards infinte;
+  -webkit-animation: firing 2s 2s ease forwards infinite;
+}
+
+// 图片淡入
+@keyframes fadeInOut {
+   0% {
+       opacity:0;
+    }
+
+   100% {
+      opacity: 1;
+   }
+}
+@-webkit-keyframes fadeInOut {
+   0% {
+       opacity:0;
+    }
+
+   100% {
+      opacity: 1;
+   }
+}
+
+.anit-occur__tooltip {
+  animation: fadeInOut 2s ease-in;
+  -webkit-animation: fadeInOut 2s ease-in;
+  -moz-animation: fadeInOut 2s ease-in;
+  -o-animation: fadeInOut 2s ease-in;
+
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation: fadeInOut 2s ease-in;
+  -o-animation: fadeInOut 2s ease-in;
+
+}
+
+.anit-occur{
+  animation: fadeInOut 4s ease-in;
+  -webkit-animation: fadeInOut 4s ease-in;
+  -moz-animation: fadeInOut 4s ease-in;
+  -o-animation: fadeInOut 2s ease-in;
+
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+}

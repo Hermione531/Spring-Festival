@@ -1,0 +1,91 @@
+.mint-button {
+  &:active {
+    background-color: transparent;
+  }
+  &--default.is-plain {
+    border: none;
+    color: transparent;
+  }
+  &::after {
+    background-color: transparent
+  }
+}
+
+.mint-indicator-wrapper, .mint-indicator-mask{
+  z-index: 9999 !important;
+}
+
+
+
+.swiper-wrapper {
+  background-color: $activity_color;
+}
+
+.background {
+  // position: relative;
+  margin: 0 auto;
+  // height: calc(var(--vh, 1vh) * 100);
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  // background-size: cover;
+  background-position: center;
+  z-index: -999;
+}
+
+.before-button {
+  // width: 572px / $width * 100vw;
+  // height: 152px / $height * 100vh;
+  // position: absolute;
+  // width: 30vw;
+  // height: 6vw;
+
+  // top: 2321px / $height * 100vh;
+  // top: calc(2321px / $height * calc(var(--vh, 1vh) * 100))
+  // left: 317px / $width * 100vw;
+  position: absolute;
+  width: 45vw;
+  height: 15vw;
+  left: 28vw;
+
+  top: 188vw;
+  // top: 82%;
+  // height: 6.5%;
+
+}
+
+.before-field {
+  position: absolute;
+  width: 640px / $width * 100vw;
+  // height: 80px / $height * 100vh;
+
+  // left: 297px / $width * 100vw;
+  left: 25vw;
+  top: 62vw;
+  height: 6vw;
+  //top: 2371px
+  // top: calc(var(--vh, 0.88vh) * 100);
+  // top: 88vh;
+  z-index: 1;
+}
+
+.active-bg {
+  position: relative;
+  height: 100%;
+  width: calc(100vw);
+  // height: calc(100vh);
+  overflow: scroll;
+  margin: auto 0;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: -999;
+  }
+
+.background-full {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+
+
+

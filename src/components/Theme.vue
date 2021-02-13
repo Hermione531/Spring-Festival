@@ -2,7 +2,7 @@
   <div class="background background-full  theme-bg">
       <div v-if="foreshow" class="background-full theme-bg__tooltip0"></div>
       <div v-if="complete && showComplete" class="background-full theme-bg__tooltip1"></div>
-      <div class="theme-redpocket">
+      <div class="theme-redpocket" :class="[active ? 'active' : '']">
         <div class="background-full amin-rotate theme-redpocket__bg theme-redpocket__bg0">
           <img v-show="uploadedPics[0].pictureUrl" class="theme-redpocket__bg__img" :src="uploadedPics[0].pictureUrl" alt="加载失败……">
           <input id="upload" type="file" accept="image/*" @change="takePhoto($event, '2021-02-11', 0)" />
@@ -69,6 +69,7 @@ import { getImgByDate, updateImg } from '../req';
     data() {
       return {
         showComplete: false,
+        active: true
       }
     },
     mounted() {
@@ -96,9 +97,15 @@ import { getImgByDate, updateImg } from '../req';
       login() {
         let now = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss');
         if(now < ACTIVITY_START) {
-          MessageBox.alert('敬请期待！', '精彩活动将于除夕开启');
+          this.active = false;
+          MessageBox.alert('敬请期待！', '精彩活动将于除夕开启').then(() => {
+            this.active = true;
+          });
         } else if (now > ACTIVITY_END) {
-          MessageBox.alert('感谢关注！', '活动已结束');
+          this.active = false;
+          MessageBox.alert('感谢关注！', '活动已结束').then(() => {
+            this.active = true;
+          });
         } else {
           // window.location.href = '/login';
           this.$router.push('/login');

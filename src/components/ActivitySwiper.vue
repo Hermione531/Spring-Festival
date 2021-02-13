@@ -28,6 +28,7 @@
 import {swiperAnimateCache,swiperAnimate} from "../assets/lib/swiper.animate.min.js"
 import { formatDate } from '../utils';
 import { PERSON_CODE } from '../utils/consts'
+import { getActivityPhoto } from '../req';
 import Activity from './Activity'
 
 let activity_days = ['2021-02-11', '2021-02-12', '2021-02-13', '2021-02-14', '2021-02-15', '2021-02-16', '2021-02-17']
@@ -91,10 +92,15 @@ export default {
         this.$router.push('/login');
         return;
        }
+     getActivityPhoto(personCode).then(json => {
+      if(json.data.value.length >= 7) {
+            this.$router.push('/complete');
+        };
       this.curDate = formatDate(new Date(), 'yyyy-MM-dd');
       let idx = activity_days.indexOf(this.curDate);
-      this.swiper.slideTo(idx, 0, false)
-    },
+      this.swiper.slideTo(idx, 0, false);
+    });
+  },
   methods: {
       onSwiper(swiper) {
         console.log(swiper);

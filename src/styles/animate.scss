@@ -5,14 +5,14 @@
     100%{transform:perspective(200px) rotateY(360deg) translateZ(2px)}/*保障后百分之五十都是翻转了180度的形状*/
 }
 
-.amin-rotate{
+.active .amin-rotate{
   animation: robotmove 2s 2s linear infinite;
   -moz-animation: robotmove 2s 2s linear infinite;
   -webkit-animation: robotmove 2s 2s linear infinite;
   -o-animation: robotmove 2s 2s linear infinite;
 }
 
-.amin-rotate__delay{
+.active .amin-rotate__delay{
   animation: robotmove 2s 3s linear infinite;
   -moz-animation: robotmove 2s 3s linear infinite;
   -webkit-animation: robotmove 2s 3s linear infinite;

@@ -51,7 +51,7 @@ export default {
           loop: false,
           circular: true,
           height: window.innerHeight,
-          hashNavigation:true,
+          // hashNavigation:true,
           // allowSlidePrev : false, //禁止上滑
           autoHeight: true,
           on:{

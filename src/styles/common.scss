@@ -13,6 +13,15 @@
   }
 }
 
+.v-modal {
+  // visibility: hidden;
+  // z-index: 9998;
+}
+
+.mint-msgbox-wrapper {
+  z-index: 99999 !important;
+}
+
 .mint-indicator-wrapper, .mint-indicator-mask{
   z-index: 9999 !important;
 }
@@ -24,6 +33,7 @@
 
 .swiper-container {
   width: 100vw;
+  background-color: $activity_color;
 }
 .swiper-wrapper {
   background-color: $activity_color;

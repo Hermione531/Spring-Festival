@@ -1,8 +1,8 @@
 // 原地翻转
 @keyframes robotmove{
     0%{}
-    50%{transform:rotateY(360deg);}/*49%-50%图片翻转*/
-    100%{transform:rotateY(360deg);}/*保障后百分之五十都是翻转了180度的形状*/
+    50%{transform:perspective(200px) rotateY(360deg) translateZ(2px)}/*49%-50%图片翻转*/
+    100%{transform:perspective(200px) rotateY(360deg) translateZ(2px)}/*保障后百分之五十都是翻转了180度的形状*/
 }
 
 .amin-rotate{

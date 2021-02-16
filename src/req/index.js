@@ -4,7 +4,9 @@ const hostname = window.location.origin;
 export const address = {
   login: hostname + '/spring-festival/person/login',
   uploadpic: hostname + '/spring-festival/activity/image',
-  completeNum: hostname + '/spring-festival/statistic/completedNum'
+  completeNum: hostname + '/spring-festival/statistic/completedNum',
+  getActivityPhoto: hostname + '/spring-festival/activity',
+  updateImg: hostname + '/spring-festival/activity/image',
 }
 
 
@@ -31,7 +33,7 @@ export const getActivityPhoto = (personCode) => {
   return new Promise((resolve, reject) => {
     axios({
       method: 'get',
-      url: `/spring-festival/activity/${personCode}`
+      url: `${address.getActivityPhoto}/${personCode}`
     }).then((json) => {
       resolve(json.data);
     }).catch(e => {
@@ -54,11 +56,12 @@ export const getImgByDate = (data) => {
   })
 }
 
-export const totalNum = () => {
+export const updateImg = (data) => {
   return new Promise((resolve, reject) => {
     axios({
-      method: 'GET',
-      url: '/spring-festival/activity/image'
+      method: 'PUT',
+      url: address.updateImg,
+      data: data
     }).then((json) => {
       resolve(json.data);
     }).catch(e => {

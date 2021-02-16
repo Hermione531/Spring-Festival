@@ -21,7 +21,7 @@
 <script>
 import { loginSystem, getActivityPhoto, getImgByDate, totalNum, getNumByDate, getNumByDateEnd, getStatistics } from '../req';
 import { formatDate } from '../utils';
-import { PERSON_CODE } from '../utils/consts'
+import { PERSON_CODE, ACTIVITY_START, ACTIVITY_END  } from '../utils/consts'
 export default {
   name: 'login',
   data () {
@@ -34,11 +34,29 @@ export default {
   },
   methods: {
     mounted() {
+      let now = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss');
+      if(now < ACTIVITY_START) {
+        MessageBox.alert('敬请期待！', '精彩活动将于除夕开启');
+        return;
+      }
+      if (now > ACTIVITY_END) {
+        MessageBox.alert('感谢关注！', '活动已结束');
+        return;
+      }
       if(localStorage.getItem(PERSON_CODE)) {
         this.$router.push('/activity');
       }
     },
     async login () {
+      let now = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss');
+      if(now < ACTIVITY_START) {
+        MessageBox.alert('敬请期待！', '精彩活动将于除夕开启');
+        return;
+      }
+      if (now > ACTIVITY_END) {
+        MessageBox.alert('感谢关注！', '活动已结束');
+        return;
+      }
       if(!this.loginJson.personCode) {
         MessageBox.alert('工号不能为空', '请输入工号');
         return;

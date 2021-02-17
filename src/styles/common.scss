@@ -15,7 +15,9 @@
   z-index: 9999 !important;
 }
 
-
+.swiper-slide {
+  z-index:-1;
+}
 
 .swiper-wrapper {
   background-color: $activity_color;

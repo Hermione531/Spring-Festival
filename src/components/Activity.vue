@@ -1,7 +1,7 @@
 <template>
     <div :class="`background active-bg active-bg__page${dayProp}`">
         <div :class="`anit-occur__tooltip active-bg__tooltip active-bg__tooltip${dayProp}`"></div>
-        <div :class="dayProp === 3 ? 'anit-occur upload-btn upload-btn__diff' : ` anit-occur upload-btn upload-btn__sim` " v-show="showUpload && startAnitBtn" @click="uploadTrigger"></div>
+        <mt-button :class="dayProp === 3 ? 'anit-occur upload-btn upload-btn__diff' : ` anit-occur upload-btn upload-btn__sim` " v-show="showUpload && startAnitBtn" @click.native="uploadTrigger"></mt-button>
         <input id="upload" type="file" accept="image/*" @change="takePhoto($event)" style="visibility: hidden" />
         <div class="anit-firing active-bg__fire1" v-show="startAnit"></div>
         <div class="anit-firing active-bg__fire2"></div>
@@ -245,6 +245,7 @@ export default {
       background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center;
+      background-color: transparent;
       z-index: 99999;
 
       &__sim {

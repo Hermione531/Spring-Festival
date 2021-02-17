@@ -60,6 +60,10 @@ import { getImgByDate, updateImg } from '../req';
       addPic: {
         type: Function,
         default: () => {}
+      },
+      toTotal: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -77,14 +81,13 @@ import { getImgByDate, updateImg } from '../req';
     },
     methods: {
       ifShowComplete() {
-        let flag = true;
-        for(let i = 0; i < this.uploadedPics.lenght; i++) {
-          if (!this.uploadedPics[i].id) {
-            flag = false;
-            break;
+        let num = 0;
+        for(let i = 0; i < this.uploadedPics.length; i++) {
+          if (this.uploadedPics[i].id) {
+            num += 1;
           }
         }
-        if(!flag) {
+        if(num < 7) {
           this.showComplete = false;
         } else {
           this.showComplete = true;
@@ -106,7 +109,12 @@ import { getImgByDate, updateImg } from '../req';
               spinnerType: 'fading-circle'
           });
           let file=e.target.files[0]//获取文件对象
-          let personCode = localStorage.getItem(PERSON_CODE);
+          let personCode = sessionStorage.getItem(PERSON_CODE);
+          if(!personCode) {
+            this.$router.push('login');
+            Indicator.close();
+            return;
+           }
           var formData = new FormData();
           formData.append('image', file);
           formData.append('personCode', personCode);

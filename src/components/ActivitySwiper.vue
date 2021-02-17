@@ -27,6 +27,7 @@
 <script>
 import {swiperAnimateCache,swiperAnimate} from "../assets/lib/swiper.animate.min.js"
 import { formatDate } from '../utils';
+import { PERSON_CODE } from '../utils/consts'
 import Activity from './Activity'
 
 let activity_days = ['2021-02-11', '2021-02-12', '2021-02-13', '2021-02-14', '2021-02-15', '2021-02-16', '2021-02-17']
@@ -85,6 +86,11 @@ export default {
       }
     },
     mounted() {
+      let personCode = sessionStorage.getItem(PERSON_CODE);
+       if(!personCode) {
+        this.$router.push('login');
+        return;
+       }
       this.curDate = formatDate(new Date(), 'yyyy-MM-dd');
       let idx = activity_days.indexOf(this.curDate);
       this.swiper.slideTo(idx, 0, false)

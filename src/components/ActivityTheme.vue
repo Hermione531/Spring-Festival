@@ -24,11 +24,32 @@
 <script>
 import { formatDate } from '../utils';
 import { PERSON_CODE, ACTIVITY_START, ACTIVITY_END } from '../utils/consts';
+import { getNumByDateEnd, getActivityPhoto } from '../req';
 import Theme from './Theme';
+
 export default {
   name: 'activityTheme',
   components: {
     Theme
+  },
+  data() {
+    return {
+      toTotal: false
+    }
+  },
+  mounted() {
+    const personCode = sessionStorage.getItem(PERSON_CODE);
+    if(!personCode) {
+            this.$router.push('login');
+            return;
+           }
+     getActivityPhoto(personCode).then(json => {
+      if(json.data.value.length < 7) {
+            this.toTotal = false;
+          } else {
+            this.toTotal = true;
+          }
+        });
   },
   methods: {
     changeRouter() {
@@ -38,7 +59,11 @@ export default {
         } else if (now > ACTIVITY_END) {
           MessageBox.alert('感谢关注！', '活动已结束');
         } else {
-          this.$router.push('/activity');
+          if(this.toTotal) {
+            this.$router.push('/complete');
+          } else {
+            this.$router.push('/activity');
+          }
         }
     },
      login() {

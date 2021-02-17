@@ -44,7 +44,11 @@ export default {
       takePhoto(e){//拍照功能---上传头像
           let file=e.target.files[0]//获取文件对象
           let now = formatDate(new Date(), 'yyyy-MM-dd');
-          let personCode = localStorage.getItem(PERSON_CODE);
+          let personCode = sessionStorage.getItem(PERSON_CODE);
+          if(!personCode) {
+            this.$router.push('login');
+            return;
+           }
           var formData = new FormData();
           formData.append('image', file);
           formData.append('personCode', personCode);

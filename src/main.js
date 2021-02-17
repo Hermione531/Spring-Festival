@@ -41,16 +41,16 @@ router.beforeEach((to, from, next) => {
   }
 
   // 未登录跳转到登录页面
-  let personCode = localStorage.getItem(PERSON_CODE);
-  if(!personCode){
-    if(to.path !== '/login' && to.path !== '/theme' && to.path !== '/end') {
-      next('/login');
-    }
-  } else {
-    if(to.path === '/login') {
-      next('activity');
-    }
-  }
+  // let personCode = localStorage.getItem(PERSON_CODE);
+  // if(!personCode){
+  //   if(to.path !== '/login' && to.path !== '/theme' && to.path !== '/end') {
+  //     next('/login');
+  //   }
+  // } else {
+  //   if(to.path === '/login') {
+  //     next('activity');
+  //   }
+  // }
   next();
 })
 

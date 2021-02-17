@@ -43,9 +43,17 @@ export default {
         MessageBox.alert('感谢关注！', '活动已结束');
         return;
       }
-      if(localStorage.getItem(PERSON_CODE)) {
-        this.$router.push('/activity');
-      }
+      // let personCode = localStorage.getItem(PERSON_CODE);
+      // if(personCode) {
+      //   getActivityPhoto(personCode).then(json => {
+      //      if(json.data.value.length < 7) {
+      //       this.$router.push('/activity');
+      //     } else {
+      //       this.$router.push('/complete');
+      //     }
+      //   })
+
+      // }
     },
     async login () {
       let now = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss');
@@ -68,9 +76,15 @@ export default {
         let info = await loginSystem(this.loginJson);
         Indicator.close();
         if(info.success) {
-          localStorage.setItem(PERSON_CODE, this.loginJson.personCode)
+          sessionStorage.setItem(PERSON_CODE, this.loginJson.personCode)
           // window.location.href = '/activity';
-          this.$router.push('/activity');
+          let data = await  getActivityPhoto(this.loginJson.personCode);
+          if(data.data.value.length < 7) {
+            this.$router.push('/activity');
+          } else {
+            this.$router.push('/complete');
+          }
+
         } else {
            MessageBox.alert(info.errMsg, '登录失败');
         }

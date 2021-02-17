@@ -29,7 +29,7 @@ export default {
       return {
         uploadJson: {
           file: '',
-          personCode: localStorage.getItem(PERSON_CODE),
+          personCode: sessionStorage.getItem(PERSON_CODE),
           recordDate: ''
         }
       }

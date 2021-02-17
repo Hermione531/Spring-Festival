@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="background active-bg activity-bg__complete"></div> -->
-  <Theme :complete="true" :uploadedPics="uploadedPics" :addPic="addPic" />
+  <Theme :complete="true" :uploadedPics="uploadedPics" :addPic="addPic" :toTotal="toTotal"/>
 </template>
 <script>
 import Theme from './Theme';
@@ -10,13 +10,19 @@ import { PERSON_CODE } from '../utils/consts';
     name: 'complete',
     data () {
       return {
-        uploadedPics: []
+        uploadedPics: [],
+        toTotal: false
       }
     },
     components: {
       Theme
     },
     mounted() {
+      const personCode = sessionStorage.getItem(PERSON_CODE);
+     if(!personCode) {
+      this.$router.push('login');
+      return;
+     }
      getNumByDateEnd().then(info => {
       if(info.success) {
 
@@ -27,7 +33,7 @@ import { PERSON_CODE } from '../utils/consts';
      }).catch(e => {
         MessageBox.alert('', `获取数据失败`);
      })
-     const personCode = localStorage.getItem(PERSON_CODE);
+
      getActivityPhoto(personCode).then(json => {
         const pics = [{'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}, {'id': '', 'pictureUrl': ''}]
 
@@ -46,6 +52,11 @@ import { PERSON_CODE } from '../utils/consts';
           pics[index] = {'id': item.id, 'pictureUrl': item.pictureUrl};
         })
         this.uploadedPics = pics;
+        if(json.data.value.length < 7) {
+          this.toTotal = false
+        } else {
+          this.toTotal =  true;
+        }
         console.log(pics)
 
      })

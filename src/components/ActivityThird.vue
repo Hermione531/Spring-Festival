@@ -46,7 +46,7 @@ export default {
           let now = formatDate(new Date(), 'yyyy-MM-dd');
           let personCode = sessionStorage.getItem(PERSON_CODE);
           if(!personCode) {
-            this.$router.push('login');
+            this.$router.push('/login');
             return;
            }
           var formData = new FormData();

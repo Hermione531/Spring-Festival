@@ -20,7 +20,7 @@ import { PERSON_CODE } from '../utils/consts';
     mounted() {
       const personCode = sessionStorage.getItem(PERSON_CODE);
      if(!personCode) {
-      this.$router.push('login');
+      this.$router.push('/login');
       return;
      }
      getNumByDateEnd().then(info => {

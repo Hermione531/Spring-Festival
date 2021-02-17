@@ -40,7 +40,7 @@ export default {
   mounted() {
     const personCode = sessionStorage.getItem(PERSON_CODE);
     if(!personCode) {
-            this.$router.push('login');
+            this.$router.push('/login');
             return;
            }
      getActivityPhoto(personCode).then(json => {

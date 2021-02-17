@@ -88,7 +88,7 @@ export default {
     mounted() {
       let personCode = sessionStorage.getItem(PERSON_CODE);
        if(!personCode) {
-        this.$router.push('login');
+        this.$router.push('/login');
         return;
        }
       this.curDate = formatDate(new Date(), 'yyyy-MM-dd');

@@ -16,7 +16,7 @@ const routes = [
   {path: '/activity', component: ActivitySwiper},
   {path: '/complete', component: ActivityComplete},
   {path: '/end', component: ActivityEnd},
-  {path: '/', component: Login},
+  {path: '/', component: ActivityTheme},
   {path: '/theme', component: ActivityTheme},
 ]
 

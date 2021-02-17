@@ -1,13 +1,15 @@
 .mint-button {
   &:active {
     background-color: transparent;
+    border: none;
   }
   &--default.is-plain {
     border: none;
     color: transparent;
   }
   &::after {
-    background-color: transparent
+    background-color: transparent;
+    border: none;
   }
 }
 
@@ -17,10 +19,15 @@
 
 .swiper-slide {
   z-index:-1;
+  height: 100%;
 }
 
+.swiper-container {
+  width: 100vw;
+}
 .swiper-wrapper {
   background-color: $activity_color;
+  height: 100vh;
 }
 
 .background {

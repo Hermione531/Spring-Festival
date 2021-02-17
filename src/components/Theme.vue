@@ -52,7 +52,8 @@ import { formatDate } from '../utils';
       display: flex;
       justify-content: center;
       width: calc(100vw);
-      height: calc(100vh);
+      height: 100%;
+      // height: calc(100vh);
       height: calc(var(--vh, 1vh) * 100);
       background-image: url('../assets/theme_bg.jpg');
 
@@ -102,7 +103,7 @@ import { formatDate } from '../utils';
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-between;
-    z-index: 50;
+    z-index: 1;
 
     &__bg {
       width: 25vw;

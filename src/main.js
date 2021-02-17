@@ -43,8 +43,14 @@ router.beforeEach((to, from, next) => {
 
   // 未登录跳转到登录页面
   let personCode = localStorage.getItem(PERSON_CODE);
-  if(!personCode && to.path !== '/login' && to.path !== '/theme') {
-    next('/login');
+  if(!personCode){
+    if(to.path !== '/login' && to.path !== '/theme') {
+      next('/login');
+    }
+  } else {
+    if(to.path === '/login' || to.path === '/theme') {
+      next('activity');
+    }
   }
   next();
 })
